@@ -9,7 +9,6 @@ import router from "@/router";
 // vuex
 import store from "@/store";
 
-
 // 公共样式
 import "@/assets/css/common.css";
 // 字体图标
@@ -19,6 +18,9 @@ import "@/assets/js/flexible";
 // 共用组件tabbar
 import Tabbar from "@/components/common/Tabbar.vue";
 Vue.component("Tabbar", Tabbar);
+// Header
+import Header from "@/components/common/Header.vue";
+Vue.component("Header", Header);
 // 首页头部滑动插件
 import LyTab from "ly-tab";
 Vue.use(LyTab);

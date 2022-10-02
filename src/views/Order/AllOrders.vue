@@ -20,11 +20,9 @@
 </template>
 
 <script>
-import Header from "@/components/common/Header";
 import { mapState } from "vuex";
 export default {
   name: "allOrders",
-  components: { Header },
   created() {
     this.$store.dispatch("getAllOrders");
   },
@@ -34,10 +32,8 @@ export default {
     }),
     status() {
       let status = [];
-      this.allOrders.forEach((element, index) => {
-        if (element.order_status == 1) {
-          status.push("未支付");
-        } else if (element.order_status == 2) {
+      this.allOrders.forEach(element => {
+        if (element.order_status == 2) {
           status.push("待支付");
         } else if (element.order_status == 3) {
           status.push("支付成功");
@@ -61,12 +57,10 @@ export default {
   background-color: #f6f6f6;
 }
 ul {
-  //   width: 100%;
   padding: 0.3rem;
   margin-top: 0.2rem;
   font-size: 0.4rem;
   li {
-    // width: 100%;
     padding: 0.3rem;
     background-color: #fff;
     margin-bottom: 0.5333rem;

@@ -32,12 +32,13 @@ export default {
     width: 100%;
     background-color: #b0352f;
     align-items: center;
+    justify-content: space-between;
 }
 
 .search{
-    width: 6.5rem;
+    width: 6rem;
     height: .8rem;
-    margin: 0 .5333rem;
+    margin-right: .4rem;
     background-color: #fff;
     border-radius: .32rem;
     font-size: .4rem;
@@ -56,23 +57,25 @@ export default {
 }
 
 .logo {
-    width: 1.6rem;
+    display: flex;
+    width: 2.7rem;
     height: 100%;
+    align-items: center;
     line-height: 2rem;
 }
 
 .logo img {
-    width: 130%;
+    width: 100%;
     height: 70%;
 }
 
 .customer-support{
-    margin-right: .3rem;
+    margin-right: .5rem;
 }
 
 .customer-support i {
     color: white;
-    font-size: .65rem;
+    font-size: .7rem;
 }
 
 </style>

@@ -60,6 +60,7 @@ export default{
 	justify-content: center;
 	align-items: center;
 	width: 50%;
+	margin-bottom: .2667rem;
 }
 .like h3{
 	padding:0 0.16rem;

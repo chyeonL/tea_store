@@ -14,6 +14,7 @@ const $axios = axios.create({
 
 $axios.interceptors.request.use((config) => {
   Indicator.open("加载中...");
+  // vuex中有token，就携带一起请求
   if (store.state.Login.token) {
     config.headers.token = store.state.Login.token;
   }

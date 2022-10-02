@@ -45,9 +45,7 @@
       </div>
     </section>
 
-    <div class="footer">
-      <Footer />
-    </div>
+    <Footer />
   </div>
   </keep-alive>
 </template>
@@ -90,8 +88,8 @@ export default {
       await this.$store.dispatch('Detail/getDetail',this.$route.query.id)
       this.$nextTick(() => {
       this.bs = new BetterScroll(this.$refs.wrapper, {
-        movable: true,
-        zoom: true,
+        mouseWheel: true,
+        movable:true,   //拉拽效果
         click: true,
         bounce: false, //阻止回弹效果
         probeType: 3,
@@ -233,12 +231,6 @@ export default {
         height: 100%;
       }
     }
-  }
-
-  .footer {
-    position: relative;
-    width: 100%;
-    height: 1.3333rem;
   }
 }
 </style>

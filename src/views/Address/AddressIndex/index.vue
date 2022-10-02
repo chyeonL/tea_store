@@ -1,7 +1,10 @@
 <template>
   <div class="addressIndex">
     <header>
-      <div class="back" @click="$router.back()">
+      <div class="back" @click="$router.back()" v-if="selectStatus">
+        <i class="iconfont icon-xiangzuojiantou"></i>
+      </div>
+       <div class="back" @click="$router.push('/my')" v-else>
         <i class="iconfont icon-xiangzuojiantou"></i>
       </div>
       <div class="title">
@@ -36,9 +39,7 @@
 </template>
 
 <script>
-import Header from "@/components/common/Header";
 import { mapState } from "vuex";
-import bus from '@/api/bus.js'
 
 export default {
   name: "AddressIndex",
@@ -48,11 +49,8 @@ export default {
       path: "/my",
     };
   },
-  components: { Header },
   created() {
-    this.$store.dispatch("getAddress").then((res) => {
-      // console.log(res);
-    });
+    this.$store.dispatch("getAddress")
     // console.log(this.$route);
     if (this.$route.query.type) {
       this.selectStatus = true;
@@ -74,12 +72,12 @@ export default {
       if(this.selectStatus) return;
       this.$router.push({
         name: "AddressEdit",
-        params: item,
+        query: item,
       });
     },
 
     goOrder(add) {
-        bus.$emit("selectPath", JSON.stringify(add));
+        this.$bus.$emit("selectPath", JSON.stringify(add));
         this.$router.back();
         return;
     },

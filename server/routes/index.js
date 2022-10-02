@@ -745,7 +745,7 @@ router.post('/api/loginByTel', function (req, res, next) {
 
 	//查询用户手机号是否存在
 	conn.query(user.queryUserTel(params), function (error, results) {
-		// console.log(results);
+		console.log(results);
 		//手机号存在 
 		if (results.length > 0) {
 			let id = results[0].id;

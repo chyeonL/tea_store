@@ -16,9 +16,6 @@ export default {
         data: {
           list: rootGetters.goodsList,
         },
-        headers: {
-          token: true,
-        },
       });
       console.log(res);
       if (res.success) {
@@ -34,9 +31,6 @@ export default {
         method: "post",
         data: {
           orderId: state.orderId,
-        },
-        headers: {
-          token: true,
         },
       });
       // console.log(res.data);
@@ -57,15 +51,10 @@ export default {
       let res = await http.$axios({
         url: "/api/submitOrder",
         method: "post",
-        headers: {
-          token: true,
-          // 'content-type':'application/x-form-urlencoded'
-        },
         data: dataObj
       });
       // console.log(res);
       if (res.success) {
-        // commit("ORDER", res.data);
         return res;
       } else return Promise.reject(new Error("failed"));
     },

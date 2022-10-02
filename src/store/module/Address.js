@@ -26,9 +26,6 @@ export default {
         url: "/api/addAddress",
         method: "post",
         data,
-        headers: {
-          token: true,
-        },
       });
       if (res.success) return res;
       else return Promise.reject(new Error("failed"));
@@ -37,9 +34,6 @@ export default {
     async getAddress({ commit }) {
       let res = await http.$axios({
         url: "/api/getAddress",
-        headers: {
-          token: true,
-        },
       });
       if (res.success) {
         commit("ADDRESSLIST", res.data);
@@ -53,9 +47,6 @@ export default {
         url: "/api/updateAddress",
         method: "post",
         data,
-        headers: {
-          token: true,
-        },
       });
       if (res.success) return res;
       else return Promise.reject(new Error("failed"));

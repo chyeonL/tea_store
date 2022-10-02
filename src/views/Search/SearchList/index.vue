@@ -99,8 +99,6 @@ export default {
       // 先等页面DOM都渲染完毕后，再初始化执行滚动插件
       this.$nextTick(() => {
         this.bs1 = new BScroll(this.$refs.wrapper, {
-          movable: true,
-          zoom: true,
           bounce:false,
           pullDownRefresh:false,
         });

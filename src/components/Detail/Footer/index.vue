@@ -23,11 +23,10 @@ export default {
   methods: {
     addToCart() {
       // 没有开启命名空间，路径前面不用写模块名
-      this.$store.dispatch("addToCart", this.$route.query.id)
-        .then(res=>{
-          console.log(res);
-          this.$toast(res.msg);
-        })
+      this.$store.dispatch("addToCart", this.$route.query.id).then((res) => {
+        console.log(res);
+        this.$toast(res.msg);
+      });
     },
   },
 };
@@ -36,11 +35,10 @@ export default {
 <style lang="scss" scoped>
 .footer {
   width: 100%;
+  height: 1.3333rem;
   display: flex;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   align-items: center;
+  background-color: #f0eded;
   .three {
     display: flex;
     width: 1.5rem;
@@ -50,7 +48,6 @@ export default {
     align-items: center;
     font-size: 0.3733rem;
     color: rgb(65, 64, 64);
-    // border: .0267rem solid #ccc;
     .iconfont {
       font-size: 0.5rem;
     }

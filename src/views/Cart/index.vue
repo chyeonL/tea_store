@@ -97,18 +97,17 @@ export default {
     ...mapGetters(["isAllChecked", "total", "goodsList"]),
   },
   created() {
-    // 进入页面 从本地存储中判断登陆状态，登录了就发请求获取购物车数据
-    localStorage.getItem("isLogin") ? this.getData() : false;
+    // 是需要登录了，才能进入cart页面的
+    this.getData();
   },
   methods: {
     async getData() {
       await this.$store.dispatch("getCart").then((res) => {
         this.$nextTick(() => {
           new BetterScroll(this.$refs.wrapper, {
-            movable: true,
             click: true,
             bounce: false, //阻止回弹效果
-            // probeType: 3,
+            mouseWheel: true,
           });
         });
       });
@@ -122,9 +121,7 @@ export default {
           message: "确认删除商品吗？",
         })
         .then(() => {
-          this.$store.dispatch("deleteGoods", id).then((res) => {
-            // console.log(res);
-          });
+          this.$store.dispatch("deleteGoods", id);
         })
         .catch(() => {
           return;
@@ -147,21 +144,21 @@ export default {
           // 跳转 提交订单
           this.$router.push({
             name: "Order",
-            path:'/order',
-            query:{
-              goodsList:JSON.stringify(this.goodsList)
-            }
+            path: "/order",
+            // query:{
+            //   goodsList:JSON.stringify(this.goodsList)
+            // }
+            query: this.goodsList,
           });
         });
       } else this.$toast("还未勾选商品");
     },
 
-    changeIsManage(){
-      if(this.cartList.length > 0 ){
-        this.isManage = !this.isManage
-      }
-      else return
-    }
+    changeIsManage() {
+      if (this.cartList.length > 0) {
+        this.isManage = !this.isManage;
+      } else return;
+    },
   },
 };
 </script>
@@ -181,20 +178,22 @@ export default {
     width: 100%;
     overflow: hidden;
     flex-direction: column;
-    background-color: #f5f5f5;
+    background-color: #efecec;
     ul {
       display: flex;
-      // width: 100%;
       flex-direction: column;
-      // margin-bottom: 0.4rem;
+      align-items: center;
+      margin-top: 0.3rem;
       li {
         display: flex;
-        padding: 0.16rem 0.533333rem;
-        margin-top: 0.4rem;
+        width: 92%;
+        padding: 0.4rem 0.2rem;
+        margin-bottom: 0.6rem;
         align-items: center;
         justify-content: space-between;
         background-color: #fff;
         font-size: 0.35rem;
+        border-radius: 0.5rem;
 
         .goods-img {
           img {
@@ -292,6 +291,8 @@ footer {
     text-align: center;
     font-size: 0.426666rem;
     background-color: #b0352f;
+    border-top-right-radius: 0.5rem;
+    border-radius: 1rem;
   }
 
   span {

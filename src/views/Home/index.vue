@@ -2,7 +2,6 @@
   <div class="home">
     <!-- 头部 -->
     <div class="headers">
-      <div class="headers-main">
         <Header></Header>
         <ly-tab
           v-model="selectedId"
@@ -11,7 +10,6 @@
           @change="changeTab"
         >
         </ly-tab>
-      </div>
     </div>
 
     <!-- 中间滚动区域 -->
@@ -54,15 +52,15 @@ import Like from "@/components/Home/Like";
 import Ad from "@/components/Home/Ad";
 //引入插件
 import BetterScroll from "better-scroll";
+import MouseWheel from '@better-scroll/mouse-wheel'
 import http from "@/api/request.js";
-import { mapState } from "vuex";
 
 export default {
   name: "Home",
   data() {
     return {
-      selectedId: 0,
-      items: [],
+      selectedId: 0,  //ly-tab的选择项
+      items: [],      //ly-tab的每一项
       newData: [],
       options: {
         activeColor: "#b0352f",
@@ -101,6 +99,7 @@ export default {
           zoom: true,
           click: true,
           bounce: false,
+            mouseWheel:true
         });
       });
     },
@@ -121,8 +120,7 @@ export default {
         // 页面DOM结构完全生成再 初始化滚动插件
         this.$nextTick(() => {
           this.bs2 = new BetterScroll(this.$refs.wrapper, {
-            movable: true,
-            zoom: true,
+            mouseWheel: true
           });
         });
       }
@@ -147,11 +145,11 @@ export default {
   width: 100%;
   height: 2.88rem;
 }
-.headers-main {
+/* .headers-main {
   position: fixed;
   left: 0;
   top: 0;
-}
+} */
 section {
   flex: 1;
   overflow: hidden;

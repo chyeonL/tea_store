@@ -26,11 +26,8 @@
 </template>
 
 <script>
-import Header from "@/components/common/Header";
-
 export default {
   name: "Login",
-  components: { Header },
   data() {
     return {
       userTel: "",

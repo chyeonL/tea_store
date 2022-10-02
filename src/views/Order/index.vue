@@ -85,11 +85,8 @@
 </template>
 
 <script>
-import Header from "@/components/common/Header";
 //引入插件
 import BetterScroll from "better-scroll";
-import { mapGetters } from "vuex";
-import bus from "@/api/bus.js";
 
 export default {
   name: "Order",
@@ -102,10 +99,8 @@ export default {
         num: 0,
       },
       path: {},
-      choosePath: {},
     };
   },
-  components: { Header },
   mounted() {
     this.$nextTick(() => {
       new BetterScroll(this.$refs.wrapper, {
@@ -113,6 +108,7 @@ export default {
         zoom: true,
         click: true,
         bounce: false,
+        mouseWheel: true,
       });
     });
   },
@@ -126,7 +122,8 @@ export default {
       this.path = index == -1 ? {} : res.data[index];
     });
 
-    this.list = JSON.parse(this.$route.query.goodsList);
+    // this.list = JSON.parse(this.$route.query.goodsList);
+    this.list = this.$route.query
 
     // 查询订单
     this.$store.dispatch("getOrder").then((res) => {
@@ -138,7 +135,7 @@ export default {
     });
   },
   activated() {
-    bus.$on(
+    this.$bus.$on(
       "selectPath",
       function (data) {
         this.path = JSON.parse(data);

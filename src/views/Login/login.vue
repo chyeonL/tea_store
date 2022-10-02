@@ -42,11 +42,8 @@
 </template>
 
 <script>
-import Header from "@/components/common/Header";
-
 export default {
   name: "Login",
-  components: { Header },
   data() {
     return {
       userTel: "",
@@ -94,13 +91,13 @@ export default {
       if (!this.validate("userTel")) return;
       // 通过后，按钮效果改变
       this.disabled = true;
-      let countdown = 6;
+      let countdown = 60;
       this.timer = setInterval(() => {
         if (countdown > 0) {
           this.codeMsg = `${countdown}秒后可重新发送`;
           countdown--;
         } else {
-          countdown = 6;
+          countdown = 60;
           this.codeMsg = "获取短信验证码";
           this.disabled = false;
           clearInterval(this.timer);
@@ -112,7 +109,7 @@ export default {
         .then((res) => {
           console.log(res.data, res);
           this.codeVerification = res.data;
-          this.code = this.codeVerification;
+          this.code = this.codeVerification;    //  自动填充
         })
         .catch((err) => {
           console.log(err);

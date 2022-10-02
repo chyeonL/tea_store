@@ -22,7 +22,6 @@ export default {
 <style scoped>
 .ad{
   width: 100%;
-  /* height: 2.987rem; */
 }
 
 .ad img{

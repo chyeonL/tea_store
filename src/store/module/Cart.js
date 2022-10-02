@@ -45,9 +45,6 @@ export default {
         data: {
           id: value,
         },
-        headers: {
-          token: true, //  说明用户已登录
-        },
       });
       // console.log(res);
       if (res.success) return res;
@@ -152,11 +149,6 @@ export default {
         });
         // 清空选中
         state.selectedList = [];
-        // state.selectedList.forEach((item, index) => {
-        //   if (item.id == id) {
-        //     state.selectedList.splice(index, 1);
-        //   }
-        // });
       });
       // 重新遍历选中的
       state.cartList.forEach((item) => {

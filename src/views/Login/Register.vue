@@ -51,11 +51,8 @@
 </template>
 
 <script>
-import Header from "@/components/common/Header";
-
 export default {
   name: "Register",
-  components: { Header },
   data() {
     return {
       userTel: "",

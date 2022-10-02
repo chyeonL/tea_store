@@ -9,7 +9,6 @@
 <script>
 export default {
     name:'Card',
-    // props:['title']
 }
 </script>
 

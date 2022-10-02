@@ -73,7 +73,7 @@ export default {
     display: flex;
     align-items: center;
     background-color: #fff;
-    width: 6.933333rem;
+    width: 6rem;
 	  height: 0.8rem;
     font-size: .45rem;
     border-radius: .4rem;

@@ -66,8 +66,9 @@ export default {
     // 编辑地址 跳转过来会携带参数，默认是编辑地址
     // 如果是添加地址，params是个空对象
     // 空对象不为false或null，所以用parmas里面的id字段来判断
-    this.isEdit = this.$route.params.id ? true : false;
-    this.AddressInfo = this.$route.params;
+    console.log(this.$route.query);
+    this.isEdit = this.$route.query.id? true : false;
+    this.AddressInfo = this.$route.query;
     this.AddressInfo['isDefault'] = this.AddressInfo['isDefault']=='true'?true:false
   },
   methods: {

@@ -1,4 +1,3 @@
-// axios
 import http from '@/api/request'
 
 const state = {
@@ -19,6 +18,8 @@ const actions = {
 
 const mutations = {
     GETCATEGORY(state,value){
+        state.left=[]
+        state.right=[]
         value.forEach(item=>{
             if(item.bannerUrl) {
                 state.banner = item.bannerUrl
@@ -30,7 +31,6 @@ const mutations = {
                 state.right.push(item.data)
             }            
         })
-        // console.log( state.right);
     }
 }
 
