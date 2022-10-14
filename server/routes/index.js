@@ -275,7 +275,7 @@ router.get('/api/goods/shopList', function (req, res, next) {
 	console.log(searchName, orderName, name, order);
 	let sql = 'select * from goods_list where name like "%' + name + '%" order by ' + orderName + ' ' + order + ''
 	conn.query(sql, function (error, results) {
-		// console.log(results);
+		console.log(results);
 		res.send({
 			code: 0,
 			data: results
