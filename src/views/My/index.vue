@@ -14,7 +14,8 @@
     <main>
       <ul>
         <li @click="$router.push('/address')">地址管理</li>
-        <li @click="$router.push('/allOrders')">所有订单</li>
+        <!-- <li @click="$router.push('/allOrders')">所有订单</li> -->
+        <li >所有订单</li>
         <li @click="logout">退出登录</li>
       </ul>
     </main>

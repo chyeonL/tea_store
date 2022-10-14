@@ -81,19 +81,25 @@ export default {
   methods: {
     // 发送请求获取搜索列表
     async getData() {
-      await http.$axios({
-          url: "/api/goods/shopList",
-          params: {
-            searchName: this.$route.query.key,
-            // 展开对象     这有这样才可以将其中的key作为属性名
-            ...this.orderBy,
-            // orderBy:this.orderBy
-          },
-        })
-        .then((res) => {
-          this.goodsList = res;
-          // console.log(res);
-        });
+      // mock
+      await this.$mock.mockSearch().then(res=>{
+        // console.log(res);
+         this.goodsList = res.data
+      })
+
+      // await http.$axios({
+      //     url: "/api/goods/shopList",
+      //     params: {
+      //       searchName: this.$route.query.key,
+      //       // 展开对象     这有这样才可以将其中的key作为属性名
+      //       ...this.orderBy,
+      //       // orderBy:this.orderBy
+      //     },
+      //   })
+      //   .then((res) => {
+      //     this.goodsList = res;
+      //     // console.log(res);
+      //   });
 
         // 滚动的范围出现了问题
       // 先等页面DOM都渲染完毕后，再初始化执行滚动插件
@@ -101,6 +107,7 @@ export default {
         this.bs1 = new BScroll(this.$refs.wrapper, {
           bounce:false,
           pullDownRefresh:false,
+          mouseWheel:true
         });
       });
     },

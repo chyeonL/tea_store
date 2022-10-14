@@ -1,4 +1,5 @@
 <template>
+  <!-- HTML结构 -->
   <div class="tabbar">
     <ul>
       <li
@@ -11,24 +12,24 @@
           alt=""
         />
         <span :class="$route.path.startsWith(item.path) ? 'active' : ''">
-          {{item.title}}
+          {{ item.title }}
         </span>
       </li>
     </ul>
   </div>
 </template>
 
-
 <script>
 export default {
   name: "Tabbar",
+  // 遍历的数据
   data() {
     return {
       routerList: [
         {
           title: "首页",
-          active: "./images/home.png",
-          selected: "./images/home-select.png",
+          active: "./images/home.png", //未选中
+          selected: "./images/home-select.png", //选中
           path: "/home",
         },
         {
@@ -62,31 +63,30 @@ export default {
 };
 </script>
 
-<style scoped>
-.tabbar {
+<style scoped lang="scss">
+.tabbar {                         // 使用了scss 预处理器
   width: 100%;
   height: 1.4rem;
   background-color: white;
-}
 
-.tabbar ul {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  height: 100%;
-}
+  ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
 
-.tabbar ul li {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.4267rem;
-  align-items: center;
-  justify-content: center;
-}
-
-img {
-  width: 0.8267rem;
-  height: 0.8267rem;
+    li {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.4267rem;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 0.8267rem;
+        height: 0.8267rem;
+      }
+    }
+  }
 }
 </style>

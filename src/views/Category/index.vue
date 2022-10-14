@@ -67,7 +67,14 @@ export default {
   methods: {
     // 获取数据
     async getData() {
-      await this.$store.dispatch("Category/getCategory");
+      // mock数据
+      await this.$mock.mockCategory().then(res=>{
+        // console.log(res);
+        this.$store.commit('Category/GETCATEGORY',res.data)
+      })
+
+      // await this.$store.dispatch("Category/getCategory");
+
       this.$nextTick(() => {
         // 左
         new BScroll(this.$refs.l, {
@@ -93,7 +100,7 @@ export default {
 
         // 绑定滚动事件，得到右侧滑动值
         this.rightScroll.on("scroll", (pos) => {
-          console.log(pos);
+          // console.log(pos);
           this.scrollY = Math.abs(pos.y);
           this.showHeader = this.scrollY > 70 ? false : true
         });
@@ -111,12 +118,15 @@ export default {
   computed: {
     ...mapState("Category", ["left", "right", "banner"]),
 
-    currentIndex(){
-      return this.allHeight.findIndex((item, index) => {
+    currentIndex:{
+      get(){
+        return this.allHeight.findIndex((item, index) => {
         // console.log(item,index);
         // 就是处于这个高度和下一个高度之间，取这一个高度的下标
         return this.scrollY >= item && this.scrollY < this.allHeight[index+1]          
       });
+      },
+      set(){}
     },
   },
 };

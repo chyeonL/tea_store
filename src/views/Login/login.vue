@@ -46,7 +46,7 @@ export default {
   name: "Login",
   data() {
     return {
-      userTel: "",
+      userTel: "13763334852",
       code: "",
       //验证规则
       rules: {
@@ -103,17 +103,21 @@ export default {
           clearInterval(this.timer);
         }
       }, 1000);
+
+      this.codeVerification = "1234";
+      this.code = this.codeVerification;
+
       // 发请求获取验证码
-      this.$store
-        .dispatch("Login/getCode", this.userTel)
-        .then((res) => {
-          console.log(res.data, res);
-          this.codeVerification = res.data;
-          this.code = this.codeVerification;    //  自动填充
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // this.$store
+      //   .dispatch("Login/getCode", this.userTel)
+      //   .then((res) => {
+      //     console.log(res.data, res);
+      //     this.codeVerification = res.data;
+      //     this.code = this.codeVerification;    //  自动填充
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
 
     validate(key) {
@@ -132,24 +136,36 @@ export default {
         return false;
       }
       // 有没有该手机号的用户
-      else {
-        this.$store
-          .dispatch("Login/loginByTel", { userTel: this.userTel })
-          .then((res) => {
-            console.log(res);
-            if (res.success) {
-              this.$toast(res.msg);
-              if (this.$route.query.redirect)
-                this.$router.push(this.$route.query.redirect);
-              else this.$router.push("/my");
-            } else {
-              this.$toast(res.msg);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+      // else {
+      //   this.$store
+      //     .dispatch("Login/loginByTel", { userTel: this.userTel })
+      //     .then((res) => {
+      //       // console.log(res.data);
+      //       if (res.success) {
+      //         this.$toast(res.msg);
+      //         if (this.$route.query.redirect)
+      //           this.$router.push(this.$route.query.redirect);
+      //         else this.$router.push("/my");
+      //       } else {
+      //         this.$toast(res.msg);
+      //       }
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // }
+
+      // mock
+      this.$mock.mockLogin().then((res) => {
+        // console.log(res);
+        // console.log(this.$store);
+        this.$store.commit('Login/LOGIN', res.data)  
+        this.$toast(res.msg);
+        if (this.$route.query.redirect)
+          this.$router.push(this.$route.query.redirect);
+        else this.$router.push("/my");
+      });
+      
     },
   },
 };

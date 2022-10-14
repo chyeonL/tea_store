@@ -23,10 +23,10 @@ export default {
   methods: {
     addToCart() {
       // 没有开启命名空间，路径前面不用写模块名
-      this.$store.dispatch("addToCart", this.$route.query.id).then((res) => {
-        console.log(res);
-        this.$toast(res.msg);
-      });
+      // this.$store.dispatch("addToCart", this.$route.query.id).then((res) => {
+      //   console.log(res);
+      //   this.$toast(res.msg);
+      // });
     },
   },
 };

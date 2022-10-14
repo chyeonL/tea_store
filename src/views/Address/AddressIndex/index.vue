@@ -50,8 +50,13 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("getAddress")
-    // console.log(this.$route);
+    // mock
+    this.$mock.mockAddress().then(res=>{
+      // console.log(res);
+      this.$store.commit("ADDRESSLIST", res.data);
+    })
+
+    // this.$store.dispatch("getAddress")
     if (this.$route.query.type) {
       this.selectStatus = true;
     }
@@ -64,22 +69,22 @@ export default {
   methods: {
     // 跳转的时同一个页面
     addAddress() {
-      this.$router.push("/addressEdit");
+      // this.$router.push("/addressEdit");
     },
 
     // 跳转编辑地址页面，并携带对应address对象
     editAddress(item) {
-      if(this.selectStatus) return;
-      this.$router.push({
-        name: "AddressEdit",
-        query: item,
-      });
+      // if(this.selectStatus) return;
+      // this.$router.push({
+      //   name: "AddressEdit",
+      //   query: item,
+      // });
     },
 
     goOrder(add) {
-        this.$bus.$emit("selectPath", JSON.stringify(add));
-        this.$router.back();
-        return;
+        // this.$bus.$emit("selectPath", JSON.stringify(add));
+        // this.$router.back();
+        // return;
     },
   },
 };

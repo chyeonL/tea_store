@@ -8,7 +8,10 @@ import router from "@/router";
 
 // vuex
 import store from "@/store";
-
+// mock
+import '@/mock'
+import * as mockRequest from '@/mock/mockRequest'
+Vue.prototype.$mock = mockRequest
 // 公共样式
 import "@/assets/css/common.css";
 // 字体图标
@@ -41,7 +44,6 @@ import {
   Radio,
 } from "vant";
 import "vant/lib/index.css";
-// import 'vant/lib/toast/style';
 Vue.use(Lazyload);
 Vue.use(Toast);
 Vue.use(Checkbox);
@@ -77,6 +79,7 @@ router.beforeEach((to, from, next) => {
     }
   } else next();
 
+  // 登陆后不可再跳转登录与注册
   if (to.matched.some((i) => i.meta.afterLogin)) {
     if (isLogin) {
       Toast("用户已登录");

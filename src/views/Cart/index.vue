@@ -102,7 +102,11 @@ export default {
   },
   methods: {
     async getData() {
-      await this.$store.dispatch("getCart").then((res) => {
+      // mock
+      await this.$mock.mockCart().then(res=>{
+        // console.log(res);
+        this.$store.commit('GETCART',res.data)
+        
         this.$nextTick(() => {
           new BetterScroll(this.$refs.wrapper, {
             click: true,
@@ -110,7 +114,20 @@ export default {
             mouseWheel: true,
           });
         });
-      });
+      })
+
+      // await this.$store.dispatch("getCart").then((res) => {
+      //   res.data.forEach(element => {
+      //     console.log(element);
+      //   });
+      //   this.$nextTick(() => {
+      //     new BetterScroll(this.$refs.wrapper, {
+      //       click: true,
+      //       bounce: false, //阻止回弹效果
+      //       mouseWheel: true,
+      //     });
+      //   });
+      // });
     },
 
     deleteGoods(id) {
@@ -121,7 +138,7 @@ export default {
           message: "确认删除商品吗？",
         })
         .then(() => {
-          this.$store.dispatch("deleteGoods", id);
+          // this.$store.dispatch("deleteGoods", id);
         })
         .catch(() => {
           return;
@@ -130,27 +147,27 @@ export default {
 
     changeNum(num, id) {
       // console.log(num,id);
-      this.$store.dispatch("updateGoods", { num, id }).then((res) => {
-        console.log(res);
-      });
+      // this.$store.dispatch("updateGoods", { num, id }).then((res) => {
+      //   console.log(res);
+      // });
     },
 
     // 去结算
     goOrder() {
       if (this.selectedList.length) {
         // 生成一个订单
-        this.$store.dispatch("addOrder").then((res) => {
-          // console.log(res);
-          // 跳转 提交订单
-          this.$router.push({
-            name: "Order",
-            path: "/order",
-            // query:{
-            //   goodsList:JSON.stringify(this.goodsList)
-            // }
-            query: this.goodsList,
-          });
-        });
+        // this.$store.dispatch("addOrder").then((res) => {
+        //   // console.log(res);
+        //   // 跳转 提交订单
+          // this.$router.push({
+          //   name: "Order",
+          //   path: "/order",
+          //   // query:{
+          //   //   goodsList:JSON.stringify(this.goodsList)
+          //   // }
+          //   query: this.goodsList,
+          // });
+        // });
       } else this.$toast("还未勾选商品");
     },
 

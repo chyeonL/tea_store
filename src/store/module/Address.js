@@ -35,6 +35,7 @@ export default {
       let res = await http.$axios({
         url: "/api/getAddress",
       });
+      // console.log(res.data);
       if (res.success) {
         commit("ADDRESSLIST", res.data);
         return res;

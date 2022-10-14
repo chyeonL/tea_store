@@ -112,17 +112,11 @@ const routes = [
                 path: '/',
                 name: 'AddressIndex',
                 component: AddressIndex,
-                meta:{
-                    requireAuth:true
-                },
             },
             {
                 path: '/addressEdit',
                 name: 'AddressEdit',
                 component: AddressEdit,
-                meta:{
-                    requireAuth:true
-                },
             }
         ]
     },

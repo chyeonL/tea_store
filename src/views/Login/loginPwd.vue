@@ -30,8 +30,8 @@ export default {
   name: "Login",
   data() {
     return {
-      userTel: "",
-      userPwd: "",
+      userTel: "13763334852",
+      userPwd: "111111",
       //验证规则
       rules: {
         //手机号验证
@@ -63,20 +63,32 @@ export default {
       if (!this.validate("userTel") || !this.validate("userPwd")) return;
 
       // 后端验证
-      this.$store.dispatch("Login/loginByPwd", {
-        userTel: this.userTel,
-        userPwd: this.userPwd,
-      }).then(res=>{
-        console.log(res);
-            if (res.success) {
-              this.$toast(res.msg);
-              if (this.$route.query.redirect)
-                this.$router.push(this.$route.query.redirect);
-              else this.$router.push("/my");
-            } else {
-              this.$toast(res.msg);
-            }
-      })
+      // this.$store.dispatch("Login/loginByPwd", {
+      //   userTel: this.userTel,
+      //   userPwd: this.userPwd,
+      // }).then(res=>{
+      //   console.log(res);
+      //       if (res.success) {
+      //         this.$toast(res.msg);
+      //         if (this.$route.query.redirect)
+      //           this.$router.push(this.$route.query.redirect);
+      //         else this.$router.push("/my");
+      //       } else {
+      //         this.$toast(res.msg);
+      //       }
+      // })
+      
+      // mock
+      this.$mock.mockLogin().then((res) => {
+        // console.log(res);
+        // console.log(this.$store);
+        this.$store.commit('Login/LOGIN', res.data)  
+        this.$toast(res.msg);
+        if (this.$route.query.redirect)
+          this.$router.push(this.$route.query.redirect);
+        else this.$router.push("/my");
+      });
+      
     },
 
     validate(key) {

@@ -85,7 +85,14 @@ export default {
   },
   methods: {
     async getData(){
-      await this.$store.dispatch('Detail/getDetail',this.$route.query.id)
+      // mock
+      await this.$mock.mockDetail().then(res=>{
+        // console.log(res);
+        this.$store.commit('Detail/GETDETAIL',res.data)
+      })
+
+      // await this.$store.dispatch('Detail/getDetail',this.$route.query.id)
+
       this.$nextTick(() => {
       this.bs = new BetterScroll(this.$refs.wrapper, {
         mouseWheel: true,

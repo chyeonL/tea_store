@@ -86,10 +86,16 @@ export default {
   methods: {
     // 立即获取数据
     async getData() {
-      let res = await http.$axios({ url: "/api/index_list/0/data/1" });
-      // console.log(res);
-      this.items = Object.freeze(res.topBar);
-      this.newData = Object.freeze(res.data);
+      // let res = await http.$axios({ url: "/api/index_list/0/data/1" });
+      // // console.log(res);
+      // this.items = Object.freeze(res.topBar);
+      // this.newData = Object.freeze(res.data);
+
+      // mock
+      let r = await this.$mock.mockHome()
+      // console.log(r.data);
+      this.items = Object.freeze(r.data.topBar);
+      this.newData = Object.freeze(r.data.data);
 
       // 滚动的范围出现了问题
       // 先等页面DOM都渲染完毕后，再初始化执行滚动插件
@@ -107,15 +113,30 @@ export default {
     // 切换栏重发请求
     async addData(index) {
       if (index == 0 || index == 1 || index == 2) {
-        let res = await http.$axios({
-          url: `/api/index_list/${index}/data/1`,
-        });
+        // let res = await http.$axios({
+        //   url: `/api/index_list/${index}/data/1`,
+        // });
 
-        if (res.constructor != Array) {
-          this.newData = res.data;
-        } else {
-          this.newData = res;
+        // mock
+        let res 
+        if(index==1){
+          res = await this.$mock.mockHomeDA()
         }
+        if(index==2){
+          res = await this.$mock.mockHomeTIE()
+        }
+        // console.log(res);
+        if (res.constructor != Array) {
+          this.newData = res.data.data;
+        } else {
+          this.newData = res.data;
+        }
+        
+        // if (res.constructor != Array) {
+        //   this.newData = res.data;
+        // } else {
+        //   this.newData = res;
+        // }
 
         // 页面DOM结构完全生成再 初始化滚动插件
         this.$nextTick(() => {
