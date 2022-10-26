@@ -6,8 +6,6 @@ const state = {
     banner:''
 }
 
-const getters = {}
-
 const actions = {
     async getCategory({commit}){
         let res = await http.$axios({url:'/api/category'})
@@ -37,7 +35,6 @@ const mutations = {
 export default ({
     namespaced:true,
     state,
-    getters,
     actions,
     mutations
 })

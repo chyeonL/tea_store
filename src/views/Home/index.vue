@@ -53,6 +53,7 @@ import Ad from "@/components/Home/Ad";
 //引入插件
 import BetterScroll from "better-scroll";
 import MouseWheel from '@better-scroll/mouse-wheel'
+// 引入二次封装过的axios请求实例
 import http from "@/api/request.js";
 
 export default {

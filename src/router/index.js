@@ -48,7 +48,7 @@ const routes = [
         name: 'Cart',
         component: Cart,
         meta:{
-            requireAuth:true
+            requireAuth:true        // 需要登陆
         },
     },
     {
@@ -57,7 +57,7 @@ const routes = [
         component: Search,
         children: [
             {   //搜索页面的默认主页
-                path: '/',
+                path: '',
                 name: 'searchIndex',
                 component: searchIndex
             },
@@ -73,7 +73,7 @@ const routes = [
         name: 'Detail',
         component: Detail,
         meta: {
-            keepAlive: true
+            keepAlive: true         // 路由缓存
         }
     },
     {
@@ -81,7 +81,7 @@ const routes = [
         name: 'Login',
         component: Login,
         meta:{
-            afterLogin:true
+            afterLogin:true         // 登陆后，无法再进入登录、注册页
         }
     },
     {
@@ -105,24 +105,18 @@ const routes = [
         name: 'Address',
         component: Address,
         meta:{
-            requireAuth:true
+            requireAuth:true        // 需要登陆  给父路由加上后，所有子路由都会有
         },
         children: [
             {
                 path: '/',
                 name: 'AddressIndex',
                 component: AddressIndex,
-                meta:{
-                    requireAuth:true
-                },
             },
             {
                 path: '/addressEdit',
                 name: 'AddressEdit',
                 component: AddressEdit,
-                meta:{
-                    requireAuth:true
-                },
             }
         ]
     },

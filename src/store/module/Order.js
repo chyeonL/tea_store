@@ -6,7 +6,6 @@ export default {
     orderId: JSON.parse(localStorage.getItem("teaStore_orderID")) || "",
     allOrders:[]
   },
-  getters: {},
   actions: {
     // cart页面去结算 调用的 新增订单
     async addOrder({ commit, rootGetters }) {

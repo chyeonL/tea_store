@@ -5,6 +5,7 @@
 ul{
 	list-style: none;
 }
+/* 清楚输入框默认样式 */
 input{
     border: none;
     outline: none;

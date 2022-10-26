@@ -7,8 +7,6 @@ const state = {
     token: ''
 }
 
-const getters = {}
-
 const actions = {
     async loginByPwd({ commit }, data) {
         let res = await http.$axios({
@@ -93,7 +91,6 @@ const mutations = {
 export default ({
     namespaced: true,
     state,
-    getters,
     actions,
     mutations
 })
