@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunktea_store"]=self["webpackChunktea_store"]||[]).push([[865],{6865:function(e,t,r){r.r(t),r.d(t,{default:function(){return i}});var a=function(){var e=this,t=e._self._c;return t("div",{staticClass:"search"},[t("router-view")],1)},s=[],n={name:"Search"},u=n,c=r(1001),l=(0,c.Z)(u,a,s,!1,null,"2a2a1048",null),i=l.exports}}]);
