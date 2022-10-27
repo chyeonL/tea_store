@@ -606,7 +606,7 @@ Mock.mock("/mock/login", {
     id: 102,
     tel: "13763334852",
     pwd: "111111",
-    imgUrl: "/images/user.jpeg",
+    imgUrl: "./images/user.jpeg",
     nickName: "超妍超妍",
     token:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWwiOiIxMzc2MzMzNDg1MiIsImlhdCI6MTY2NTc0OTY4MywiZXhwIjoxNjY1OTIyNDgzfQ.vBQKLCHpUIF8AYUkiqAosCwtslBYQWpPLD15bLue54A",

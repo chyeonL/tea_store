@@ -17,6 +17,7 @@ export default {
   name: 'App',
   created(){
     this.$store.commit('Login/init')
+    this.$toast('在线演示，无法使用系统功能仅作展示')
   }
 }
 </script>

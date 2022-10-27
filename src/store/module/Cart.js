@@ -112,6 +112,7 @@ export default {
     },
 
     selectAll(state) {
+      state.selectedList=[]
       state.cartList.forEach((item) => {
         Vue.set(item, "isChecked", true);
         state.selectedList.push(item.id);

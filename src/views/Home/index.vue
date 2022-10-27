@@ -52,15 +52,15 @@ import Like from "@/components/Home/Like";
 import Ad from "@/components/Home/Ad";
 //引入插件
 import BetterScroll from "better-scroll";
-import MouseWheel from '@better-scroll/mouse-wheel'
+import MouseWheel from "@better-scroll/mouse-wheel";
 import http from "@/api/request.js";
 
 export default {
   name: "Home",
   data() {
     return {
-      selectedId: 0,  //ly-tab的选择项
-      items: [],      //ly-tab的每一项
+      selectedId: 0, //ly-tab的选择项
+      items: [], //ly-tab的每一项
       newData: [],
       options: {
         activeColor: "#b0352f",
@@ -92,7 +92,7 @@ export default {
       // this.newData = Object.freeze(res.data);
 
       // mock
-      let r = await this.$mock.mockHome()
+      let r = await this.$mock.mockHome();
       // console.log(r.data);
       this.items = Object.freeze(r.data.topBar);
       this.newData = Object.freeze(r.data.data);
@@ -101,11 +101,10 @@ export default {
       // 先等页面DOM都渲染完毕后，再初始化执行滚动插件
       this.$nextTick(() => {
         this.bs1 = new BetterScroll(this.$refs.wrapper, {
-          movable: true,
           zoom: true,
           click: true,
           bounce: false,
-            mouseWheel:true
+          mouseWheel: true,
         });
       });
     },
@@ -116,34 +115,28 @@ export default {
         // let res = await http.$axios({
         //   url: `/api/index_list/${index}/data/1`,
         // });
-
-        // mock
-        let res 
-        if(index==1){
-          res = await this.$mock.mockHomeDA()
-        }
-        if(index==2){
-          res = await this.$mock.mockHomeTIE()
-        }
-        // console.log(res);
-        if (res.constructor != Array) {
-          this.newData = res.data.data;
-        } else {
-          this.newData = res.data;
-        }
-        
         // if (res.constructor != Array) {
         //   this.newData = res.data;
         // } else {
         //   this.newData = res;
         // }
 
-        // 页面DOM结构完全生成再 初始化滚动插件
-        this.$nextTick(() => {
+        // mock
+        let res;
+        if (index == 1) res = await this.$mock.mockHomeDA();
+        if (index == 2) res = await this.$mock.mockHomeTIE();
+        if (index == 0) return this.getData();
+        // console.log(res.data.data);
+        this.newData = res.data.data;
+
+        this.$nextTick(() => {          
           this.bs2 = new BetterScroll(this.$refs.wrapper, {
-            mouseWheel: true
+            mouseWheel: true,
           });
+          if(this.$refs.content.clientHeight<this.$refs.wrapper.clientHeight)
+          this.bs2.disable()
         });
+
       }
     },
 
@@ -166,11 +159,6 @@ export default {
   width: 100%;
   height: 2.88rem;
 }
-/* .headers-main {
-  position: fixed;
-  left: 0;
-  top: 0;
-} */
 section {
   flex: 1;
   overflow: hidden;
