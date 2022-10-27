@@ -54,9 +54,6 @@ export default {
     async getCart({ commit }) {
       let res = await http.$axios({
         url: "/api/getCart",
-        headers: {
-          token: true, //  说明用户已登录
-        },
       });
       // console.log(res);
       if (res.success) {
@@ -112,6 +109,7 @@ export default {
     },
 
     selectAll(state) {
+      state.selectedList = []
       state.cartList.forEach((item) => {
         Vue.set(item, "isChecked", true);
         state.selectedList.push(item.id);

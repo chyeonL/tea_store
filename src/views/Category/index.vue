@@ -81,6 +81,7 @@ export default {
           bounce: false
         });
 
+        //  数组第一个值，是banner的高度
         this.allHeight.push(this.height);
 
         // 获取所有list的dom结构，得到他们各自的高度
@@ -93,9 +94,9 @@ export default {
 
         // 绑定滚动事件，得到右侧滑动值
         this.rightScroll.on("scroll", (pos) => {
-          console.log(pos);
+          // console.log(pos);
           this.scrollY = Math.abs(pos.y);
-          this.showHeader = this.scrollY > 70 ? false : true
+          this.showHeader = this.scrollY > 250 ? false : true
         });
       });
     },
@@ -111,12 +112,15 @@ export default {
   computed: {
     ...mapState("Category", ["left", "right", "banner"]),
 
-    currentIndex(){
-      return this.allHeight.findIndex((item, index) => {
+    currentIndex:{
+     get(){
+       return this.allHeight.findIndex((item, index) => {
         // console.log(item,index);
         // 就是处于这个高度和下一个高度之间，取这一个高度的下标
         return this.scrollY >= item && this.scrollY < this.allHeight[index+1]          
       });
+     },
+     set(){}
     },
   },
 };
@@ -154,6 +158,7 @@ export default {
         margin: 0.15rem 0;
         font-size: 0.5rem;
         border-left: 0.1067rem solid transparent;
+        cursor: pointer;
         &.active {
           color: #b0352f;
           border-left: 0.1067rem solid #b0352f;
@@ -203,7 +208,7 @@ export default {
             height: 2rem;
             padding: 0.1333rem 0;
             font-size: 0.4rem;
-            // background-color: #b0352f;
+            
             img {
               width: 1.41rem;
             }
@@ -211,10 +216,6 @@ export default {
         }
       }
     }
-  }
-
-  img[lazy="loading"] {
-    background-color: rgb(227, 225, 225);
   }
 }
 </style>

@@ -44,14 +44,14 @@ export default {
     },
 
     // 点击搜索历史记录
-    serachHistory(item){
-      this.$bus.$emit('searchHistory',item)
-    }
+    serachHistory(item) {
+      this.$bus.$emit("searchHistory", item);
+    },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 .searchindex {
   width: 100vw;
   height: 100vh;
@@ -64,7 +64,6 @@ export default {
 section {
   flex: 1;
   overflow: hidden;
-  background-color: #f5f5f5;
 }
 
 .search-history h2 {
@@ -74,40 +73,37 @@ section {
   font-size: 0.4rem;
   padding: 0.6rem;
   font-weight: normal;
-}
+  .title {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 
-.search-history h2 .title {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
+  i {
+    font-size: 0.4rem;
+    padding-right: 0.1333rem;
+    color: #b0352f;
+  }
 
-.search-history h2 i {
-  font-size: 0.4rem;
-  padding-right: 0.1333rem;
-  color: #b0352f;
-}
-
-.search-history h2 .clear {
-  /* width: 100px; */
-  text-align: right;
+  .clear {
+    text-align: right;
+  }
 }
 
 .search-history ul {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0.6rem;
-}
-
-.search-history ul li {
-  padding: 0.13rem 0.17rem;
-  margin: 0.1333rem 0.2667rem 0.1333rem 0;
-  font-size: 0.3733rem;
-  border: 0.0267rem solid #ccc;
+  li {
+    padding: 0.13rem 0.17rem;
+    margin: 0.1333rem 0.2667rem 0.1333rem 0;
+    font-size: 0.3733rem;
+    border: 0.0267rem solid #ccc;
+  }
 }
 
 .noHistory {
-  margin: .5333rem auto;
+  margin: 0.5333rem auto;
   text-align: center;
 }
 </style>

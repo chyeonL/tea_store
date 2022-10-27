@@ -29,8 +29,4 @@ export default {
   height: 100%;
 }
 
-img[lazy=loading] {
-  background-color: rgb(227, 225, 225);
-}
-
 </style>

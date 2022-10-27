@@ -38,6 +38,7 @@ export default {
     goDetail(id){
         this.$router.push({
           path:'/detail',
+          // name:'Detail',
           query:{id}
         })
     }
@@ -82,7 +83,4 @@ export default {
   font-weight: 700;
 }
 
-img[lazy="loading"] {
-  background-color: rgb(227, 225, 225);
-}
 </style>

@@ -24,7 +24,7 @@ export default {
     addToCart() {
       // 没有开启命名空间，路径前面不用写模块名
       this.$store.dispatch("addToCart", this.$route.query.id).then((res) => {
-        console.log(res);
+        // console.log(res);
         this.$toast(res.msg);
       });
     },
@@ -44,7 +44,7 @@ export default {
     width: 1.5rem;
     height: 100%;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     font-size: 0.3733rem;
     color: rgb(65, 64, 64);
@@ -58,7 +58,7 @@ export default {
     flex: 1;
     height: 100%;
     line-height: 1.3333rem;
-    font-size: 0.5rem;
+    font-size: 0.45rem;
     color: white;
     text-align: center;
   }

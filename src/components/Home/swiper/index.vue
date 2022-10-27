@@ -61,8 +61,4 @@ export default {
 	margin:0 0.08rem;
 }
 
-img[lazy=loading] {
-  background-color: rgb(227, 225, 225);
-}
-
 </style>

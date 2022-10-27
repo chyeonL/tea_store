@@ -14,4 +14,7 @@ input{
 input:focus{
     border: none;
 }
+img[lazy="loading"] {
+    background-color: rgb(227, 225, 225);
+  }
 

@@ -2,14 +2,14 @@
   <div class="home">
     <!-- 头部 -->
     <div class="headers">
-        <Header></Header>
-        <ly-tab
-          v-model="selectedId"
-          :items="items"
-          :options="options"
-          @change="changeTab"
-        >
-        </ly-tab>
+      <Header></Header>
+      <ly-tab
+        v-model="selectedId"
+        :items="items"
+        :options="options"
+        @change="changeTab"
+      >
+      </ly-tab>
     </div>
 
     <!-- 中间滚动区域 -->
@@ -52,7 +52,7 @@ import Like from "@/components/Home/Like";
 import Ad from "@/components/Home/Ad";
 //引入插件
 import BetterScroll from "better-scroll";
-import MouseWheel from '@better-scroll/mouse-wheel'
+import MouseWheel from "@better-scroll/mouse-wheel";
 // 引入二次封装过的axios请求实例
 import http from "@/api/request.js";
 
@@ -60,8 +60,8 @@ export default {
   name: "Home",
   data() {
     return {
-      selectedId: 0,  //ly-tab的选择项
-      items: [],      //ly-tab的每一项
+      selectedId: 0, //ly-tab的选择项
+      items: [], //ly-tab的每一项
       newData: [],
       options: {
         activeColor: "#b0352f",
@@ -111,12 +111,7 @@ export default {
         let res = await http.$axios({
           url: `/api/index_list/${index}/data/1`,
         });
-
-        if (res.constructor != Array) {
-          this.newData = res.data;
-        } else {
-          this.newData = res;
-        }
+        this.newData = res.data;
 
         // 页面DOM结构完全生成再 初始化滚动插件
         this.$nextTick(() => {
@@ -146,11 +141,7 @@ export default {
   width: 100%;
   height: 2.88rem;
 }
-/* .headers-main {
-  position: fixed;
-  left: 0;
-  top: 0;
-} */
+
 section {
   flex: 1;
   overflow: hidden;

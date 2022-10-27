@@ -75,8 +75,9 @@ export default {
     background-color: #fff;
     width: 6rem;
 	  height: 0.8rem;
-    font-size: .45rem;
+    font-size: .4rem;
     border-radius: .4rem;
+    color:#ccc;
 }
 
 .middle form{
@@ -102,7 +103,7 @@ export default {
 }
 
 .right {
-    font-size:.48rem;
+    font-size:.45rem;
 }
 
 .left,.right {

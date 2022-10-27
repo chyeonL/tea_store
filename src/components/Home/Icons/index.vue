@@ -38,7 +38,4 @@ export default {
     font-size:0.426666rem;
 }
 
-img[lazy=loading] {
-  background-color: rgb(227, 225, 225);
-}
 </style>

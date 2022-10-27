@@ -16,7 +16,7 @@
 				<h3>{{item.name}}</h3>
 				<div>
 					<span>¥</span>
-					<b>{{item.price}}</b>
+					<strong>{{item.price}}</strong>
 				</div>
 			</li>
 		</ul>
@@ -81,7 +81,7 @@ export default{
 .like ul li > div span{
 	font-size:0.32rem;
 }
-.like ul li > div b{
+.like ul li > div strong{
 	font-weight: 600;
 	font-size:0.426666rem;
 }
@@ -90,7 +90,4 @@ export default{
 	height: 4.693333rem;
 }
 
-img[lazy=loading] {
-  background-color: rgb(227, 225, 225);
-}
 </style>

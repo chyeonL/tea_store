@@ -85,7 +85,7 @@ const routes = [
         }
     },
     {
-        path: '/loginPwd',
+        path: '/loginPwd/:id?',
         name: 'LoginPwd',
         component: LoginPwd,
         meta:{

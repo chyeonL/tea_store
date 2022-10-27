@@ -15,12 +15,12 @@
 <script>
 export default {
   name: "Header",
-  props:['title','path','selectStatus'],
+  props: ["title", "path", "selectStatus"],
   methods: {
-    goBack(){
-      if(this.path) this.$router.push(this.path)
-      else this.$router.back()
-    }
+    goBack() {
+      if (this.path) this.$router.push(this.path);
+      else this.$router.back();
+    },
   },
 };
 </script>

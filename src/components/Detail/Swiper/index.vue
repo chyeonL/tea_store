@@ -24,7 +24,6 @@ export default {
           let mySwiper = new Swiper(".swiper-container", {
             direction: "horizontal", // 垂直切换选项
             loop: true, // 循环模式选项
-            // autoplay: true,
 
             pagination: {
               el: ".swiper-pagination",
@@ -61,7 +60,4 @@ img {
   height: 100%;
 }
 
-img[lazy="loading"] {
-  background-color: #ccc;
-}
 </style>

@@ -2,6 +2,7 @@
   <div class="searchList">
     <div class="headers">
       <Header />
+      <!-- 排序 -->
       <ul>
         <li
           v-for="(item, index) in sortList"
@@ -81,7 +82,8 @@ export default {
   methods: {
     // 发送请求获取搜索列表
     async getData() {
-      await http.$axios({
+      await http
+        .$axios({
           url: "/api/goods/shopList",
           params: {
             searchName: this.$route.query.key,
@@ -95,12 +97,10 @@ export default {
           // console.log(res);
         });
 
-        // 滚动的范围出现了问题
-      // 先等页面DOM都渲染完毕后，再初始化执行滚动插件
       this.$nextTick(() => {
         this.bs1 = new BScroll(this.$refs.wrapper, {
-          bounce:false,
-          pullDownRefresh:false,
+          bounce: false,
+          mouseWheel: true,
         });
       });
     },
@@ -232,13 +232,12 @@ section .goods .buy {
 }
 
 .notFound {
-  font-size: .5733rem;
-  padding: .5333rem;
+  font-size: 0.5733rem;
+  padding: 0.5333rem;
   text-align: center;
 }
 
-img[lazy=loading] {
+img[lazy="loading"] {
   background-color: rgb(227, 225, 225);
 }
-
 </style>

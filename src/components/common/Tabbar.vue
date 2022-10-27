@@ -11,13 +11,12 @@
           alt=""
         />
         <span :class="$route.path.startsWith(item.path) ? 'active' : ''">
-          {{item.title}}
+          {{ item.title }}
         </span>
       </li>
     </ul>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -89,4 +88,5 @@ img {
   width: 0.8267rem;
   height: 0.8267rem;
 }
+
 </style>
